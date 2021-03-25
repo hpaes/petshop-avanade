@@ -9,7 +9,7 @@ let pets = [
     peso: 5.8,
     contato: '(81) 98888-4241',
     tutor: 'Beto',
-    vacinado: true,
+    vacinado: false,
     servicos: ['banho', 'aparar unhas'],
   },
   {
@@ -37,4 +37,16 @@ const listPet = () => {
   }
 };
 
-listPet();
+const vacinarPet = () => {
+  for (let pet of pets) {
+    if (pet.vacinado === true) {
+      console.log(`${pet.nome} já está vacinado.`);
+    } else {
+      pet.vacinado = true;
+      console.log(`${pet.nome} foi vacinado.`);
+    }
+  }
+};
+
+// listPet();
+vacinarPet();
