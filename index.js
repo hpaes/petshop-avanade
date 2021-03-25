@@ -37,16 +37,14 @@ const listPet = () => {
   }
 };
 
-const vacinarPet = () => {
+const vacinarPet = (animal) => {
   for (let pet of pets) {
-    if (pet.vacinado === true) {
-      console.log(`${pet.nome} já está vacinado.`);
-    } else {
+    if (pet.nome === animal) {
       pet.vacinado = true;
-      console.log(`${pet.nome} foi vacinado.`);
+      console.log(`${pet.nome} foi vacinado com sucesso.`);
     }
   }
 };
 
 // listPet();
-vacinarPet();
+vacinarPet('Caramelo');
