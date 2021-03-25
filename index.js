@@ -93,11 +93,12 @@ new Date();
 const darBanhoPet = (nome) => {
   for (let pet of pets) {
     if (pet.nome === nome) {
-      pet.servicos.push('banho');
-      console.log(`${pet.nome} está de banho tomado`);
-      console.log(
-        `Serviço realizado na data: ${moment().locale('pt').format('dddd, hA')}`
+      pet.servicos.push(
+        `banho, Serviço realizado na data: ${moment()
+          .locale('pt')
+          .format('dddd, hA')}`
       );
+      console.log(`${pet.nome} está de banho tomado`);
     }
   }
 };
@@ -105,11 +106,12 @@ const darBanhoPet = (nome) => {
 const tosarPet = (nome) => {
   for (let pet of pets) {
     if (pet.nome === nome) {
-      pet.servicos.push('tosa');
-      console.log(`${pet.nome} está com o cabelinho na régua`);
-      console.log(
-        `Serviço realizado na data: ${moment().locale('pt').format('dddd, hA')}`
+      pet.servicos.push(
+        `tosa, Serviço realizado na data: ${moment()
+          .locale('pt')
+          .format('dddd, hA')}`
       );
+      console.log(`${pet.nome} está com o cabelinho na régua`);
     }
   }
 };
@@ -117,11 +119,12 @@ const tosarPet = (nome) => {
 const apararUnhasPet = (nome) => {
   for (let pet of pets) {
     if (pet.nome === nome) {
-      pet.servicos.push('corte de unhas');
-      console.log(`${pet.nome} está de unhas aparadas`);
-      console.log(
-        `Serviço realizado na data: ${moment().locale('pt').format('dddd, hA')}`
+      pet.servicos.push(
+        `corte de unhas, Serviço realizado na data: ${moment()
+          .locale('pt')
+          .format('dddd, hA')}`
       );
+      console.log(`${pet.nome} está de unhas aparadas`);
     }
   }
 };
@@ -136,3 +139,7 @@ const apararUnhasPet = (nome) => {
 darBanhoPet('Caramelo');
 tosarPet('Caramelo');
 apararUnhasPet('Caramelo');
+
+for (let pet of pets) {
+  console.log(pet.servicos);
+}
