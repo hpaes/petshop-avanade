@@ -1,0 +1,35 @@
+[
+  {
+    "nome": "Caramelo",
+    "tipo": "gato",
+    "idade": 7,
+    "raca": "SRD",
+    "peso": 5.8,
+    "contato": "(81) 98888-4241",
+    "tutor": "Beto",
+    "vacinado": false,
+    "servicos": []
+  },
+  {
+    "nome": "Joaquim",
+    "tipo": "cão",
+    "idade": 10,
+    "raca": "SRD",
+    "peso": 16,
+    "contato": "(81) 94123-4151",
+    "tutor": "José",
+    "vacinado": false,
+    "servicos": []
+  },
+  {
+    "nome": "Eriberto",
+    "tipo": "cão",
+    "idade": 11,
+    "raca": "SRD",
+    "peso": 12,
+    "contato": "(81) 94123-4151",
+    "tutor": "José",
+    "vacinado": false,
+    "servicos": []
+  }
+]

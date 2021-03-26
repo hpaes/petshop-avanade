@@ -1,31 +1,32 @@
 var moment = require('moment');
+var petJSON = require('./pets.json');
 
 const nomePetshop = 'PETSHOP AVANADE';
 
-let pets = [
-  {
-    nome: 'Caramelo',
-    tipo: 'gato',
-    idade: 7,
-    raca: 'SRD',
-    peso: 5.8,
-    contato: '(81) 98888-4241',
-    tutor: 'Beto',
-    vacinado: false,
-    servicos: [],
-  },
-  {
-    nome: 'Joaquim',
-    tipo: 'cão',
-    idade: 10,
-    raca: 'SRD',
-    peso: 16,
-    contato: '(81) 94123-4151',
-    tutor: 'José',
-    vacinado: false,
-    servicos: [],
-  },
-];
+// let pets = [
+//   {
+//     nome: 'Caramelo',
+//     tipo: 'gato',
+//     idade: 7,
+//     raca: 'SRD',
+//     peso: 5.8,
+//     contato: '(81) 98888-4241',
+//     tutor: 'Beto',
+//     vacinado: false,
+//     servicos: [],
+//   },
+//   {
+//     nome: 'Joaquim',
+//     tipo: 'cão',
+//     idade: 10,
+//     raca: 'SRD',
+//     peso: 16,
+//     contato: '(81) 94123-4151',
+//     tutor: 'José',
+//     vacinado: false,
+//     servicos: [],
+//   },
+// ];
 
 // console.log(pet);
 
@@ -40,7 +41,7 @@ const listPet = () => {
 };
 
 const vacinarPet = (animal) => {
-  for (let pet of pets) {
+  for (let pet of petJSON) {
     if (pet.nome === animal) {
       if (pet.vacinado === false) {
         pet.vacinado = true;
@@ -54,7 +55,7 @@ const vacinarPet = (animal) => {
 
 const campanhaVacina = () => {
   var petsVacinados = 0;
-  for (let pet of pets) {
+  for (let pet of petJSON) {
     if (pet.vacinado !== true) {
       petsVacinados++;
     }
@@ -91,39 +92,36 @@ const addClient = (
 new Date();
 
 const darBanhoPet = (nome) => {
-  for (let pet of pets) {
+  for (let pet of petJSON) {
     if (pet.nome === nome) {
-      pet.servicos.push(
-        `banho, Serviço realizado na data: ${moment()
-          .locale('pt')
-          .format('dddd, hA')}`
-      );
+      pet.servicos.push({
+        serviço: 'aparar unhas',
+        data: moment().format('DD-MM-YYYY'),
+      });
       console.log(`${pet.nome} está de banho tomado`);
     }
   }
 };
 
 const tosarPet = (nome) => {
-  for (let pet of pets) {
+  for (let pet of petJSON) {
     if (pet.nome === nome) {
-      pet.servicos.push(
-        `tosa, Serviço realizado na data: ${moment()
-          .locale('pt')
-          .format('dddd, hA')}`
-      );
+      pet.servicos.push({
+        serviço: 'tosa',
+        data: moment().format('DD-MM-YYYY'),
+      });
       console.log(`${pet.nome} está com o cabelinho na régua`);
     }
   }
 };
 
 const apararUnhasPet = (nome) => {
-  for (let pet of pets) {
+  for (let pet of petJSON) {
     if (pet.nome === nome) {
-      pet.servicos.push(
-        `corte de unhas, Serviço realizado na data: ${moment()
-          .locale('pt')
-          .format('dddd, hA')}`
-      );
+      pet.servicos.push({
+        serviço: 'aparar unhas',
+        data: moment().format('DD-MM-YYYY'),
+      });
       console.log(`${pet.nome} está de unhas aparadas`);
     }
   }
@@ -140,6 +138,8 @@ darBanhoPet('Caramelo');
 tosarPet('Caramelo');
 apararUnhasPet('Caramelo');
 
-for (let pet of pets) {
-  console.log(pet.servicos);
-}
+// for (let pet of pets) {
+//   console.log(pet.servicos);
+// }
+
+// console.log(dadosPetObj);
