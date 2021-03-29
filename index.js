@@ -51,7 +51,7 @@ const addClient = (
     vacinado,
     servicos
 ) => {
-    pets.push = {
+    pets.push({
         nome: nome,
         tipo: tipo,
         idade: idade,
@@ -61,8 +61,12 @@ const addClient = (
         contato: contato,
         vacinado: vacinado,
         servicos: servicos,
-    };
-    console.log(pets);
+    });
+    fs.writeFile("./DATABASE.json", JSON.stringify(pets), (err) => {
+        if (err) {
+            throw err;
+        }
+    });
 };
 
 const darBanhoPet = (pet) => {
@@ -109,6 +113,4 @@ const atenderCliente = (pet, servico) => {
     servico ? servico() : console.log("só vim dar uma olhadinha");
 };
 
-darBanhoPet(pets[0]);
-tosarPet(pets[0]);
-apararUnhasPet(pets[0]);
+atenderCliente(pets[0], apararUnhasPet(pets[0]));
