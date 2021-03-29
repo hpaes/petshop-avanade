@@ -1,13 +1,20 @@
 const moment = require("moment");
-const nomePetshop = "PETSHOP AVANADE";
 const fs = require("fs");
 
-var petJSON = require("./DATABASE.json");
+let bancoDados = fs.readFileSync("./DATABASE.json");
 
-var pets = petJSON.pets;
+bancoDados = JSON.parse(bancoDados);
+
+const atualizarBanco = () => {
+    // conversão de objeto javascript para JSON
+    let petsAtualizado = JSON.stringify(bancoDados);
+
+    // atualização do arquivo bancoDados.json
+    fs.writeFileSync("./DATABASE.json", petsAtualizado, "utf-8");
+};
 
 const listPet = () => {
-    for (let pet of pets) {
+    for (let pet of bancoDados.pets) {
         console.log(
             `${pet.nome}, ${pet.idade}, ${pet.tipo}, ${pet.raca}, ${
                 pet.vacinado ? "vacinado" : "não vacinado"
@@ -31,7 +38,7 @@ const vacinarPet = (pet) => {
 
 const campanhaVacina = () => {
     var petsVacinados = 0;
-    for (let pet of pets) {
+    for (let pet of bancoDados.pet) {
         if (pet.vacinado !== true) {
             petsVacinados++;
         }
@@ -40,45 +47,18 @@ const campanhaVacina = () => {
     console.log(`Foram vacinados ${petsVacinados} na campanha de vacinação`);
 };
 
-const addClient = (
-    nome,
-    tipo,
-    idade,
-    raca,
-    peso,
-    tutor,
-    contato,
-    vacinado,
-    servicos
-) => {
-    pets.push({
-        nome: nome,
-        tipo: tipo,
-        idade: idade,
-        raca: raca,
-        peso: peso,
-        tutor: tutor,
-        contato: contato,
-        vacinado: vacinado,
-        servicos: servicos,
-    });
-    fs.writeFile("./DATABASE.json", JSON.stringify(pets), (err) => {
-        if (err) {
-            throw err;
-        }
-    });
+const adicionarPet = (novoPet) => {
+    bancoDados.pets.push(novoPet);
+    atualizarBanco();
+    console.log(`${novoPet.nome} foi adicionado com sucesso.`);
 };
 
 const darBanhoPet = (pet) => {
     pet.servicos.push({
-        nome: "aparar unhas",
+        nome: "dar banho",
         data: moment().format("DD-MM-YYYY"),
     });
-    fs.writeFile("./DATABASE.json", JSON.stringify(pets), (err) => {
-        if (err) {
-            throw err;
-        }
-    });
+    atualizarBanco();
     console.log(`${pet.nome} está de banho tomado`);
 };
 
@@ -87,11 +67,7 @@ const tosarPet = (pet) => {
         nome: "tosa",
         data: moment().format("DD-MM-YYYY"),
     });
-    fs.writeFile("./DATABASE.json", JSON.stringify(pets), (err) => {
-        if (err) {
-            throw err;
-        }
-    });
+    atualizarBanco();
     console.log(`${pet.nome} está com o cabelinho na régua`);
 };
 
@@ -100,11 +76,7 @@ const apararUnhasPet = (pet) => {
         nome: "aparar unhas",
         data: moment().format("DD-MM-YYYY"),
     });
-    fs.writeFile("./DATABASE.json", JSON.stringify(pets), (err) => {
-        if (err) {
-            throw err;
-        }
-    });
+    atualizarBanco();
     console.log(`${pet.nome} está de unhas aparadas`);
 };
 
@@ -113,4 +85,17 @@ const atenderCliente = (pet, servico) => {
     servico ? servico() : console.log("só vim dar uma olhadinha");
 };
 
-atenderCliente(pets[0], apararUnhasPet(pets[0]));
+// listPet();
+// adicionarPet({
+//     nome: "Maria",
+//     tipo: "Cachorro",
+//     idade: 1,
+//     raca: "Vira-lata",
+//     peso: 18,
+//     contato: "(81) 98288-4241",
+//     tutor: "José",
+//     vacinado: true,
+//     servicos: [],
+// });
+
+darBanhoPet(bancoDados.pets[0]);

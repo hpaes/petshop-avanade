@@ -9,10 +9,7 @@
             "contato": "(81) 98888-4241",
             "tutor": "Beto",
             "vacinado": false,
-            "servicos": [
-                { "nome": "aparar unhas", "data": "28-03-2021" },
-                { "nome": "tosa", "data": "28-03-2021" }
-            ]
+            "servicos": []
         },
         {
             "nome": "Joaquim",
@@ -34,6 +31,28 @@
             "contato": "(81) 94123-4151",
             "tutor": "José",
             "vacinado": false,
+            "servicos": []
+        },
+        {
+            "nome": "Maria",
+            "tipo": "Cachorro",
+            "idade": 1,
+            "raca": "Vira-lata",
+            "peso": 18,
+            "contato": "(81) 98288-4241",
+            "tutor": "José",
+            "vacinado": true,
+            "servicos": []
+        },
+        {
+            "nome": "Maria",
+            "tipo": "Cachorro",
+            "idade": 1,
+            "raca": "Vira-lata",
+            "peso": 18,
+            "contato": "(81) 98288-4241",
+            "tutor": "José",
+            "vacinado": true,
             "servicos": []
         }
     ]
