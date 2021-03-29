@@ -34,6 +34,7 @@ const vacinarPet = (pet) => {
     } else {
         console.log(`Ops, ${pet.nome} já estava vacinado.`);
     }
+    atualizarBanco();
 };
 
 const campanhaVacina = () => {
@@ -44,6 +45,7 @@ const campanhaVacina = () => {
         }
         vacinarPet(pet);
     }
+
     console.log(`Foram vacinados ${petsVacinados} na campanha de vacinação`);
 };
 
@@ -98,4 +100,7 @@ const atenderCliente = (pet, servico) => {
 //     servicos: [],
 // });
 
-darBanhoPet(bancoDados.pets[0]);
+// darBanhoPet(bancoDados.pets[0]);
+
+vacinarPet(bancoDados.pets[0]);
+listPet();

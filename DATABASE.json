@@ -8,7 +8,7 @@
             "peso": 5.8,
             "contato": "(81) 98888-4241",
             "tutor": "Beto",
-            "vacinado": false,
+            "vacinado": true,
             "servicos": []
         },
         {
@@ -31,17 +31,6 @@
             "contato": "(81) 94123-4151",
             "tutor": "José",
             "vacinado": false,
-            "servicos": []
-        },
-        {
-            "nome": "Maria",
-            "tipo": "Cachorro",
-            "idade": 1,
-            "raca": "Vira-lata",
-            "peso": 18,
-            "contato": "(81) 98288-4241",
-            "tutor": "José",
-            "vacinado": true,
             "servicos": []
         },
         {
