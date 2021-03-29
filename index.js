@@ -83,8 +83,9 @@ const apararUnhasPet = (pet) => {
 };
 
 const atenderCliente = (pet, servico) => {
-    console.log(`Olá, ${pet.nome}`);
-    servico ? servico() : console.log("só vim dar uma olhadinha");
+    console.log(`Olá, ${pet.tutor}, os serviços realizados foram:`);
+    servico ? servico(pet) : console.log("só vim dar uma olhadinha");
+    console.log("Volte sempre!");
 };
 
 // listPet();
@@ -102,5 +103,7 @@ const atenderCliente = (pet, servico) => {
 
 // darBanhoPet(bancoDados.pets[0]);
 
-vacinarPet(bancoDados.pets[0]);
-listPet();
+// vacinarPet(bancoDados.pets[0]);
+// listPet();
+
+atenderCliente(bancoDados.pets[0], apararUnhasPet);
