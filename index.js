@@ -15,9 +15,10 @@ const atualizarBanco = () => {
 
 const listPet = () => {
     bancoDados.pets.forEach((pet) => {
+        let { nome, idade, tipo, raca, vacinado } = pet;
         console.log(
-            `${pet.nome}, ${pet.idade}, ${pet.tipo}, ${pet.raca}, ${
-                pet.vacinado ? "vacinado" : "não vacinado"
+            `${nome}, ${idade}, ${tipo}, ${raca}, ${
+                vacinado ? "vacinado" : "não vacinado"
             }`
         );
 
@@ -110,19 +111,40 @@ const filtarPet = (petEspecie) => {
 };
 
 const clientePremium = (pet) => {
+    let { nome } = pet;
     let nServicos = pet.servicos.length;
 
     if (nServicos > 5) {
         console.log(
-            `Olá, ${pet.nome}! Você é um cliente especial e ganhou um descontão!`
+            `Olá, ${nome}! Você é um cliente especial e ganhou um descontão!`
         );
     } else {
-        console.log(
-            `Olá, ${pet.nome}! Você ainda não tem descontos disponiveis!`
-        );
+        console.log(`Olá, ${nome}! Você ainda não tem descontos disponiveis!`);
     }
 };
-// listPet();
+
+const contatoTutor = (pet) => {
+    let { nome, tutor, contato } = pet;
+
+    return `Tutor: ${tutor}
+            Contato: ${contato}
+            Pet: ${nome}`;
+};
+
+const filtrarTutor = (nomeTutor) => {
+    let petsTutor = bancoDados.pets.filter((pet) => {
+        return pet.tutor == nomeTutor;
+    });
+
+    console.log(`Pets do tutor ${nomeTutor}:`);
+    petsTutor.forEach((pet) => {
+        console.log(`${pet.nome} - ${pet.tipo}`);
+    });
+};
+
+// filtrarTutor("José");
+// console.log(contatoTutor(bancoDados.pets[0]));
+listPet();
 // adicionarPet({
 //     nome: "Maria",
 //     tipo: "Cachorro",
