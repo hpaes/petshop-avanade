@@ -14,7 +14,7 @@ const atualizarBanco = () => {
 };
 
 const listPet = () => {
-    for (let pet of bancoDados.pets) {
+    bancoDados.pets.forEach((pet) => {
         console.log(
             `${pet.nome}, ${pet.idade}, ${pet.tipo}, ${pet.raca}, ${
                 pet.vacinado ? "vacinado" : "não vacinado"
@@ -24,7 +24,7 @@ const listPet = () => {
         for (const servico of pet.servicos) {
             console.log(`${servico.data} - ${servico.nome}`);
         }
-    }
+    });
 };
 
 const vacinarPet = (pet) => {
@@ -39,14 +39,18 @@ const vacinarPet = (pet) => {
 
 const campanhaVacina = () => {
     var petsVacinados = 0;
-    for (let pet of bancoDados.pet) {
-        if (pet.vacinado !== true) {
+
+    bancoDados.pets.map((pet) => {
+        if (!pet.vacinado) {
+            vacinarPet(pet);
             petsVacinados++;
         }
-        vacinarPet(pet);
-    }
+        return pet;
+    });
 
-    console.log(`Foram vacinados ${petsVacinados} na campanha de vacinação`);
+    console.log(
+        `Foram vacinados ${petsVacinados} pets na campanha de vacinação`
+    );
 };
 
 const adicionarPet = (novoPet) => {
@@ -88,6 +92,36 @@ const atenderCliente = (pet, servico) => {
     console.log("Volte sempre!");
 };
 
+const buscarPet = (nomePet) => {
+    let foundPet = bancoDados.pets.find((pet) => {
+        return pet.nome == nomePet;
+    });
+    return foundPet
+        ? foundPet
+        : `Desculpe, ${nomePet} não foi encontrado no sistema`;
+};
+
+const filtarPet = (petEspecie) => {
+    let petsEncontrados = bancoDados.pets.filter((pet) => {
+        return pet.especie == petEspecie;
+    });
+
+    return petsEncontrados;
+};
+
+const clientePremium = (pet) => {
+    let nServicos = pet.servicos.length;
+
+    if (nServicos > 5) {
+        console.log(
+            `Olá, ${pet.nome}! Você é um cliente especial e ganhou um descontão!`
+        );
+    } else {
+        console.log(
+            `Olá, ${pet.nome}! Você ainda não tem descontos disponiveis!`
+        );
+    }
+};
 // listPet();
 // adicionarPet({
 //     nome: "Maria",
@@ -106,4 +140,7 @@ const atenderCliente = (pet, servico) => {
 // vacinarPet(bancoDados.pets[0]);
 // listPet();
 
-atenderCliente(bancoDados.pets[0], apararUnhasPet);
+// atenderCliente(bancoDados.pets[0], apararUnhasPet);
+// campanhaVacina();
+// console.log(buscarPet("Caramelo"));
+// console.log(filtarPet("canis lupus familiaris"));
